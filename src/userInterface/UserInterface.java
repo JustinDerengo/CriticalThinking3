@@ -10,9 +10,11 @@ public class UserInterface extends JFrame {
 
 	private JTextArea textArea;
 	private JMenu menu;
-	private Color initialBackgroundColor;
+
 	
 	public UserInterface() {
+		
+		//Initializes new JFrame, w/ a scroll pane for text, and a JMenuBar w/ menu and menu items
         setTitle("Menu Example");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,13 +33,28 @@ public class UserInterface extends JFrame {
         JMenuItem changeBackgroundColorItem = new JMenuItem("Change Background Color");
         JMenuItem exitItem = new JMenuItem("Exit");
         
-        //printDateTime();
+        //need to add action listeners to the menu items so they will run class methods when selected
+        
+        dateTimeItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		printDateTime();
+        	}
+        });
         
         //saveToFile();
         
         //changeBackgroundColor();
         
         //exit();
+        
+        //need to add the menu and the menu items to the bar of the JFrame
+        menuBar.add(menu);
+        
+        menu.add(dateTimeItem);
+        menu.add(saveToFileItem);
+        menu.add(changeBackgroundColorItem);
+        menu.add(exitItem);
+        
         
 	}
 	
