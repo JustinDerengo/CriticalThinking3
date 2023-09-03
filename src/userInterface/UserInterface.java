@@ -41,7 +41,13 @@ public class UserInterface extends JFrame {
         
 	}
 	
+	private void printDateTime() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		String dateTime = dateFormat.format(new Date());
+		textArea.append(dateTime + "\n");
+	}
 	
+
 	
 	
 }
