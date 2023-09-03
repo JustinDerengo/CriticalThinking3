@@ -47,7 +47,17 @@ public class UserInterface extends JFrame {
 		textArea.append(dateTime + "\n");
 	}
 	
-
+	private void saveToFile() {
+		try (FileWriter writer = new FileWriter("log.txt", true);
+				BufferedWriter bufferedWriter = new BufferedWriter(writer);
+				PrintWriter out = new PrintWriter(bufferedWriter)) {
+			String text = textArea.getText();
+			out.println(text);
+			JOptionPane.showMessageDialog(this, "Saved to log.txt");
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(this, "Error saving to file: " + e.getMessage());
+		}
+	}
 	
 	
 }
