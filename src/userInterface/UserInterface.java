@@ -41,11 +41,23 @@ public class UserInterface extends JFrame {
         	}
         });
         
-        //saveToFile();
+        saveToFileItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		saveToFile();
+        	}
+        });
         
-        //changeBackgroundColor();
+        changeBackgroundColorItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		changeBackgroundColor();
+        	}
+        });
         
-        //exit();
+        exitItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);;
+        	}
+        });
         
         //need to add the menu and the menu items to the bar of the JFrame
         menuBar.add(menu);
