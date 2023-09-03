@@ -1,4 +1,5 @@
 package userInterface;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,12 +7,12 @@ import java.io.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+@SuppressWarnings("serial")//not sure what this does, but eclipse gave it as a warning and solution
 public class UserInterface extends JFrame {
 
 	private JTextArea textArea;
 	private JMenu menu;
 
-	
 	public UserInterface() {
 		
 		//Initializes new JFrame, w/ a scroll pane for text, and a JMenuBar w/ menu and menu items
@@ -28,13 +29,12 @@ public class UserInterface extends JFrame {
         
         menu = new JMenu("Menu");
         
-        JMenuItem dateTimeItem = new JMenuItem("Print Date and Time");
-        JMenuItem saveToFileItem = new JMenuItem("Save to File");
+        JMenuItem dateTimeItem   			= new JMenuItem("Print Date and Time");
+        JMenuItem saveToFileItem 			= new JMenuItem("Save to File");
         JMenuItem changeBackgroundColorItem = new JMenuItem("Change Background Color");
-        JMenuItem exitItem = new JMenuItem("Exit");
+        JMenuItem exitItem 					= new JMenuItem("Exit");
         
         //need to add action listeners to the menu items so they will run class methods when selected
-        
         dateTimeItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		printDateTime();
@@ -78,7 +78,7 @@ public class UserInterface extends JFrame {
 	 */
 	private void printDateTime() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-		String dateTime = dateFormat.format(new Date());
+		String dateTime				= dateFormat.format(new Date());
 		textArea.append(dateTime + "\n");
 	}
 	
@@ -109,9 +109,9 @@ public class UserInterface extends JFrame {
 	 *  @throws:none
 	 */
 	private void changeBackgroundColor() {
-		int red = 255;
+		int red   = 255;
 		int green = (int) (Math.random() *256);
-		int blue = 0;
+		int blue  = 0;
 		
 		Color randomOrangeHue = new Color(red, green, blue);
 		textArea.setBackground(randomOrangeHue);
