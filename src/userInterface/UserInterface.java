@@ -47,11 +47,14 @@ public class UserInterface extends JFrame {
         	}
         });
         
+        //line 54 was added so that it only allows the user to change the hue once, per instructions.
         changeBackgroundColorItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		changeBackgroundColor();
+        		((JMenuItem) e.getSource()).removeActionListener(this); //removes event listener after first time executed
         	}
         });
+        
         
         exitItem.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -103,17 +106,17 @@ public class UserInterface extends JFrame {
 	
 	/*
 	 * this method will change the background color of the text field to a random hue of orange
-	 *  on a scale from red to yellow using Math.random and Color object
+	 * This was changed to only having three different hues of orange to choose from, since some colors
+	 * looked too yellow or red when done with a RGB scaler method
 	 *  @param:none
 	 *  @return:none
 	 *  @throws:none
 	 */
 	private void changeBackgroundColor() {
-		int red   = 255;
-		int green = (int) (Math.random() *256);
-		int blue  = 0;
-		
-		Color randomOrangeHue = new Color(red, green, blue);
-		textArea.setBackground(randomOrangeHue);
+        // Select from one of three random hues of orange
+        float[] hues = {0.05f, 0.08f, 0.11f};
+        float randomHue = hues[(int) (Math.random() * hues.length)];
+        Color randomOrangeHue = Color.getHSBColor(randomHue, 1, 1);
+        textArea.setBackground(randomOrangeHue);
 	}
 }
